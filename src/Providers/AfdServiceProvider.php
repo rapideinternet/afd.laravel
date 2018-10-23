@@ -14,7 +14,7 @@ class AfdServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
         $this->publishes(
             [
-                __DIR__ . '/../config/afd.php' => config_path('afd.php'),
+                __DIR__ . '/../../config/afd.php' => config_path('afd.php'),
             ]
         );
     }
@@ -47,10 +47,46 @@ class AfdServiceProvider extends ServiceProvider
             \SIVI\AFD\Repositories\Model\MessageRepository::class);
 
         /**
+         * Resolvers
+         */
+        $this->app->bind(\SIVI\AFD\Resolvers\Contracts\MessageImplementationResolver::class,
+            \SIVI\LaravelAFD\Resolvers\MessageImplementationResolver::class);
+
+        $this->app->bind(\SIVI\AFD\Resolvers\Contracts\EntityImplementationResolver::class,
+            \SIVI\LaravelAFD\Resolvers\EntityImplementationResolver::class);
+
+        /**
+         * Processors
+         */
+        $this->app->bind(\SIVI\AFD\Processors\Content\Contracts\TwoPassProcessor::class,
+            \SIVI\AFD\Processors\Content\TwoPassProcessor::class);
+
+        $this->app->bind(\SIVI\AFD\Processors\Message\Contracts\MessageProcessor::class,
+            \SIVI\AFD\Processors\Message\MessageProcessor::class);
+
+        $this->app->bind(\SIVI\AFD\Processors\Entity\Contracts\EntityProcessor::class,
+            \SIVI\AFD\Processors\Entity\EntityProcessor::class);
+
+        /**
          * Parsers
          */
         $this->app->bind(\SIVI\AFD\Parsers\Contracts\XMLParser::class,
             \SIVI\AFD\Parsers\XMLParser::class);
 
+        $this->app->bind('afd.parsers.xml',
+            \SIVI\AFD\Parsers\XMLParser::class);
+
+        $this->app->bind(\SIVI\AFD\Parsers\Contracts\EDIParser::class,
+            \SIVI\AFD\Parsers\EDIParser::class);
+
+        $this->app->bind('afd.parsers.edi',
+            \SIVI\AFD\Parsers\EDIParser::class);
+
+
+        /**
+         * Services
+         */
+        $this->app->bind(\SIVI\AFD\Services\Contracts\ParserService::class,
+            \SIVI\AFD\Services\ParserService::class);
     }
 }

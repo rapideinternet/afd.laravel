@@ -1,1 +1,27 @@
+/vendor
+/node_modules
+/.DS_Store
+/Thumbs.db
+/*.sublime-project
+/*.sublime-workspace
 .idea
+.project
+_ide_helper.php
+_ide_helper_models.php
+tests/_output/*
+test/_support/Helper/*
+tests/**/*Tester.php
+tests/**/*TesterActions.php
+resources/assets/sass/bower_components
+resources/assets/**/build
+npm-debug.log
+ssh/
+documents/logins.md
+beanstalk_console/*
+
+#build exceptions
+build/**
+!build/phpcs.xml
+!build/phpmd.xml
+cache.properties
+/.phpstorm.meta.php
