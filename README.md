@@ -1,3 +1,5 @@
 ## Laravel AFD
 
-//todo
+```bash
+php artisan vendor:publish --provider="SIVI\LaravelAFD\Providers\AfdServiceProvider"
+```
