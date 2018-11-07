@@ -1,4 +1,4 @@
-<?php namespace SIVI\LaravelAFD;
+<?php namespace SIVI\LaravelAFD\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -82,11 +82,22 @@ class AfdServiceProvider extends ServiceProvider
         $this->app->bind('afd.parsers.edi',
             \SIVI\AFD\Parsers\EDIParser::class);
 
-
         /**
          * Services
          */
         $this->app->bind(\SIVI\AFD\Services\Contracts\ParserService::class,
             \SIVI\AFD\Services\ParserService::class);
+
+        /**
+         * Config
+         */
+        $this->app->bind(\SIVI\AFDConnectors\Config\Contracts\TIMEConfig::class,
+            \SIVI\LaravelAFD\Connectors\TIMEConfig::class);
+
+        /**
+         * Connectors
+         */
+        $this->app->bind(\SIVI\AFDConnectors\Connectors\Contracts\TIMEConnector::class,
+            \SIVI\AFDConnectors\Connectors\TIMEConnector::class);
     }
 }
