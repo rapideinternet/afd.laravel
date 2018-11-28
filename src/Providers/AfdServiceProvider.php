@@ -47,6 +47,15 @@ class AfdServiceProvider extends ServiceProvider
             \SIVI\AFD\Repositories\Model\MessageRepository::class);
 
         /**
+         * Transformers
+         */
+        $this->app->bind(\SIVI\AFD\Transformers\Contracts\EDITransformer::class,
+            \SIVI\AFD\Transformers\EDITransformer::class);
+
+        $this->app->bind(\SIVI\AFD\Transformers\Contracts\XMLTransformer::class,
+            \SIVI\AFD\Transformers\XMLTransformer::class);
+
+        /**
          * Resolvers
          */
         $this->app->bind(\SIVI\AFD\Resolvers\Contracts\MessageImplementationResolver::class,
