@@ -1,8 +1,9 @@
 <?php namespace SIVI\LaravelAFD\Providers;
 
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class AfdServiceProvider extends ServiceProvider
+class AfdServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Bootstrap the application services.
@@ -26,7 +27,6 @@ class AfdServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
         /**
          * Repositories
          */
@@ -108,5 +108,36 @@ class AfdServiceProvider extends ServiceProvider
          */
         $this->app->bind(\SIVI\AFDConnectors\Connectors\Contracts\TIMEConnector::class,
             \SIVI\AFDConnectors\Connectors\TIMEConnector::class);
+    }
+
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [
+            \SIVI\AFD\Repositories\Contracts\AttributeRepository::class,
+            \SIVI\AFD\Repositories\Contracts\CodeListRepository::class,
+            \SIVI\AFD\Repositories\Contracts\CodeRepository::class,
+            \SIVI\AFD\Repositories\Contracts\EntityRepository::class,
+            \SIVI\AFD\Repositories\Contracts\MessageRepository::class,
+            \SIVI\AFD\Transformers\Contracts\EDITransformer::class,
+            \SIVI\AFD\Transformers\Contracts\XMLTransformer::class,
+            \SIVI\AFD\Resolvers\Contracts\MessageImplementationResolver::class,
+            \SIVI\AFD\Resolvers\Contracts\EntityImplementationResolver::class,
+            \SIVI\AFD\Processors\Content\Contracts\TwoPassProcessor::class,
+            \SIVI\AFD\Processors\Message\Contracts\MessageProcessor::class,
+            \SIVI\AFD\Processors\Entity\Contracts\EntityProcessor::class,
+            'afd.parsers.xml',
+            'afd.parsers.edi',
+            \SIVI\AFD\Parsers\Contracts\XMLParser::class,
+            \SIVI\AFD\Parsers\Contracts\EDIParser::class,
+            \SIVI\AFD\Services\Contracts\ParserService::class,
+            \SIVI\AFDConnectors\Config\Contracts\TIMEConfig::class,
+            \SIVI\AFDConnectors\Connectors\Contracts\TIMEConnector::class,
+        ];
     }
 }

@@ -17,19 +17,23 @@
     {
       "name": "Peter Mein",
       "email": "peter@rapide.software"
+    },
+    {
+      "name": "Lucas van der Have",
+      "email": "lucas@dossierdata.nl"
     }
   ],
   "prefer-stable": true,
   "require": {
     "php": "~7",
-    "laravel/framework": "5.*",
+    "laravel/framework": "^6.0",
     "guzzlehttp/guzzle": "~6.0",
     "doctrine/dbal": "^2.5",
     "sivi/afd": "^1.0",
     "sivi/afd.connectors": "^1.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~7.0",
+    "phpunit/phpunit": "~8.0",
     "phpunit/php-code-coverage": "~6.0",
     "orchestra/database": "~3.6",
     "orchestra/testbench": "~3.5"
