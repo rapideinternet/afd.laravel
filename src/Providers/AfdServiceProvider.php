@@ -1,9 +1,8 @@
 <?php namespace SIVI\LaravelAFD\Providers;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class AfdServiceProvider extends ServiceProvider implements DeferrableProvider
+class AfdServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
