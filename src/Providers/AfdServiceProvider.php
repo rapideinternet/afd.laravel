@@ -45,6 +45,9 @@ class AfdServiceProvider extends ServiceProvider
         $this->app->bind(\SIVI\AFD\Repositories\Contracts\MessageRepository::class,
             \SIVI\AFD\Repositories\Model\MessageRepository::class);
 
+        $this->app->bind(\SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository::class,
+            \SIVI\LaravelAFD\Repositories\WSDLCacheRepository::class);
+
         /**
          * Transformers
          */
