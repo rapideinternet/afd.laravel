@@ -1,6 +1,7 @@
 <?php namespace SIVI\LaravelAFD\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use SIVI\AFDConnectors\Connectors\Contracts\TIMEConnector;
 
 class AfdServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,13 @@ class AfdServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /**
+         * Resolving binding
+         */
+        $this->app->resolving(TIMEConnector::class, function ($timeConnector, $app) {
+            $timeConnector->setCacheRepository($app->make(\SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository::class));
+        });
+
         /**
          * Repositories
          */

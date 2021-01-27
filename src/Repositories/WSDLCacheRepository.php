@@ -6,13 +6,6 @@ use SIVI\AFDConnectors\Connectors\Contracts\TIMEConnector;
 
 class WSDLCacheRepository implements \SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository
 {
-    public function __construct()
-    {
-        $this->app->resolving(TIMEConnector::class, function ($timeConnector, $app) {
-            $timeConnector->setCacheRepository($app->make(\SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository::class));
-        });
-    }
-
     /**
      * @param $key
      * @return bool
