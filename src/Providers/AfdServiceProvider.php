@@ -30,8 +30,8 @@ class AfdServiceProvider extends ServiceProvider
         /**
          * Resolving binding
          */
-        $this->app->resolving(TIMEConnector::class, function ($timeConnector, $app) {
-            $timeConnector->setCacheRepository($app->make(\SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository::class));
+        $this->app->resolving(TIMEConnector::class, function (TIMEConnector $timeConnector, $app) {
+            $timeConnector->setWSDLCacheRepository($app->make(\SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository::class));
         });
 
         /**
