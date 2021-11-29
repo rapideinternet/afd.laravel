@@ -29,7 +29,7 @@
     "laravel/framework": "^6.0",
     "guzzlehttp/guzzle": "~6.0",
     "doctrine/dbal": "^2.5",
-    "sivi/afd": "^2",
+    "sivi/afd": "^2.2.3",
     "sivi/afd.connectors": "^2"
   },
   "require-dev": {
