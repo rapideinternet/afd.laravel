@@ -7,10 +7,7 @@ use Illuminate\Contracts\Config\Repository as ConfigRepository;
 class TIMEConfig implements \SIVI\AFDConnectors\Config\Contracts\TIMEConfig
 {
 
-    /**
-     * @var ConfigRepository
-     */
-    protected $configRepository;
+    protected ConfigRepository $configRepository;
 
     public function __construct(ConfigRepository $configRepository)
     {

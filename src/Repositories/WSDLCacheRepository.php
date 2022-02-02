@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Cache;
 
 class WSDLCacheRepository implements \SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository
 {
-    protected $prefix = 'wsdl_cache';
+    protected string $prefix = 'wsdl_cache';
 
     /**
      * @param $key
