@@ -26,10 +26,10 @@
   "prefer-stable": true,
   "require": {
     "php": ">=7.4",
-    "laravel/framework": "^6.0",
-    "guzzlehttp/guzzle": "~6.0",
+    "laravel/framework": "^6.0 || ^7.0 || ^8.0",
+    "guzzlehttp/guzzle": "^6.0 || ^7.2",
     "doctrine/dbal": "^2.5",
-    "sivi/afd": "^3.0",
+    "sivi/afd": "^3",
     "sivi/afd.connectors": "^2"
   },
   "require-dev": {
