@@ -25,8 +25,8 @@
   ],
   "prefer-stable": true,
   "require": {
-    "php": ">=7.4",
-    "laravel/framework": "^6.0 || ^7.0 || ^8.0",
+    "php": ">=7.4 || 8.*",
+    "laravel/framework": "^6.0 || ^7.0 || ^8.0 || ^9.0",
     "guzzlehttp/guzzle": "^6.0 || ^7.2",
     "doctrine/dbal": "^2.5",
     "sivi/afd": "^3",
