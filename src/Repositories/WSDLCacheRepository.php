@@ -1,4 +1,6 @@
-<?php namespace SIVI\LaravelAFD\Repositories;
+<?php
+
+namespace SIVI\LaravelAFD\Repositories;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
@@ -9,7 +11,6 @@ class WSDLCacheRepository implements \SIVI\AFDConnectors\Repositories\Contracts\
 
     /**
      * @param $key
-     * @return bool
      */
     public function has($key): bool
     {
@@ -23,7 +24,6 @@ class WSDLCacheRepository implements \SIVI\AFDConnectors\Repositories\Contracts\
 
     /**
      * @param $key
-     * @return mixed
      */
     public function get($key)
     {
@@ -33,16 +33,12 @@ class WSDLCacheRepository implements \SIVI\AFDConnectors\Repositories\Contracts\
     /**
      * @param $key
      * @param $value
-     * @param Carbon $expiresAt
      */
     public function add($key, $value, Carbon $expiresAt): void
     {
         Cache::add($this->getKey($key), $value, $expiresAt);
     }
 
-    /**
-     * @param string $prefix
-     */
     public function setPrefix(string $prefix): void
     {
         $this->prefix = $prefix;

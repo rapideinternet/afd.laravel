@@ -6,7 +6,6 @@ use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 class TIMEConfig implements \SIVI\AFDConnectors\Config\Contracts\TIMEConfig
 {
-
     protected ConfigRepository $configRepository;
 
     public function __construct(ConfigRepository $configRepository)
@@ -15,7 +14,7 @@ class TIMEConfig implements \SIVI\AFDConnectors\Config\Contracts\TIMEConfig
     }
 
     /**
-     * Get the host of the service
+     * Get the host of the service.
      *
      * @return string
      */

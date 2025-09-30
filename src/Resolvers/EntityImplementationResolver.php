@@ -1,8 +1,6 @@
 <?php
 
-
 namespace SIVI\LaravelAFD\Resolvers;
-
 
 class EntityImplementationResolver implements \SIVI\AFD\Resolvers\Contracts\EntityImplementationResolver
 {

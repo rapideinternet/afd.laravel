@@ -1,4 +1,6 @@
-<?php namespace SIVI\LaravelAFD\Providers;
+<?php
+
+namespace SIVI\LaravelAFD\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use SIVI\AFDConnectors\Connectors\Contracts\TIMEConnector;
@@ -7,10 +9,8 @@ class AfdServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
         $this->publishes(
@@ -22,22 +22,19 @@ class AfdServiceProvider extends ServiceProvider
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         /**
-         * Resolving binding
+         * Resolving binding.
          */
         $this->app->resolving(TIMEConnector::class, function (TIMEConnector $timeConnector, $app) {
             $timeConnector->setWSDLCacheRepository($app->make(\SIVI\AFDConnectors\Repositories\Contracts\WSDLCacheRepository::class));
         });
 
         /**
-         * Repositories
+         * Repositories.
          */
-
         $this->app->bind(\SIVI\AFD\Repositories\Contracts\AttributeRepository::class,
             \SIVI\AFD\Repositories\JSON\AttributeRepository::class);
 
@@ -57,7 +54,7 @@ class AfdServiceProvider extends ServiceProvider
             \SIVI\LaravelAFD\Repositories\WSDLCacheRepository::class);
 
         /**
-         * Transformers
+         * Transformers.
          */
         $this->app->bind(\SIVI\AFD\Transformers\Contracts\EDITransformer::class,
             \SIVI\AFD\Transformers\EDITransformer::class);
@@ -66,7 +63,7 @@ class AfdServiceProvider extends ServiceProvider
             \SIVI\AFD\Transformers\XMLTransformer::class);
 
         /**
-         * Resolvers
+         * Resolvers.
          */
         $this->app->bind(\SIVI\AFD\Resolvers\Contracts\MessageImplementationResolver::class,
             \SIVI\LaravelAFD\Resolvers\MessageImplementationResolver::class);
@@ -75,7 +72,7 @@ class AfdServiceProvider extends ServiceProvider
             \SIVI\LaravelAFD\Resolvers\EntityImplementationResolver::class);
 
         /**
-         * Processors
+         * Processors.
          */
         $this->app->bind(\SIVI\AFD\Processors\Content\Contracts\TwoPassProcessor::class,
             \SIVI\AFD\Processors\Content\TwoPassProcessor::class);
@@ -87,7 +84,7 @@ class AfdServiceProvider extends ServiceProvider
             \SIVI\AFD\Processors\Entity\EntityProcessor::class);
 
         /**
-         * Parsers
+         * Parsers.
          */
         $this->app->bind(\SIVI\AFD\Parsers\Contracts\XMLParser::class,
             \SIVI\AFD\Parsers\XMLParser::class);
@@ -102,24 +99,23 @@ class AfdServiceProvider extends ServiceProvider
             \SIVI\AFD\Parsers\EDIParser::class);
 
         /**
-         * Services
+         * Services.
          */
         $this->app->bind(\SIVI\AFD\Services\Contracts\ParserService::class,
             \SIVI\AFD\Services\ParserService::class);
 
         /**
-         * Config
+         * Config.
          */
         $this->app->bind(\SIVI\AFDConnectors\Config\Contracts\TIMEConfig::class,
             \SIVI\LaravelAFD\Connectors\TIMEConfig::class);
 
         /**
-         * Connectors
+         * Connectors.
          */
         $this->app->bind(\SIVI\AFDConnectors\Connectors\Contracts\TIMEConnector::class,
             \SIVI\AFDConnectors\Connectors\TIMEConnector::class);
     }
-
 
     /**
      * Get the services provided by the provider.
